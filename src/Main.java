@@ -42,16 +42,6 @@ public class Main {
         return slang;
     }
 
-    // Edit slang word
-    public static void EditSlang(ArrayList<Slang> list, Slang edit){
-        for (Slang i : list) {
-            if (i.getSlang().contains(edit.getSlang())){
-                i.setMeaning(edit.getMeaning());
-                break;
-            }
-        }
-    }
-
     //
     public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
