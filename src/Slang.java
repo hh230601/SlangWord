@@ -1,5 +1,4 @@
 
-
 public class Slang {
     String slang;
     String meaning;
