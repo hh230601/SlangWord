@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.util.*;
+
 public class Frame extends javax.swing.JFrame {
 
     /**
@@ -61,11 +64,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        ResultList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        ResultList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jScrollPane2.setViewportView(ResultList);
 
         AddButton.setText("Add");
@@ -103,11 +102,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        HistoryList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        HistoryList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(HistoryList);
 
         SlangSearchButton.setText("Search Slang");

@@ -108,9 +108,9 @@ public class Main {
         return list.get(index).getSlang();
     }
 
-    public static void main(String[] args) throws IOException {
+    //public static void main(String[] args) throws IOException {
 
-        ReadSlang("D:\\slang.txt");
+      //  ReadSlang("D:\\slang.txt");
         //System.out.print("Enter slang word: ");
         //String slangword = scan.nextLine();
         //String result = SearchSlangWord(list,slangword);
@@ -118,15 +118,15 @@ public class Main {
         //    System.out.println("Slang word doesn't exist !");
         //else
         //    System.out.println("Meaning of "+ slangword + " is " + result);
-        System.out.print("Enter meaning: ");
-        String meaning = scan.nextLine();
-        ArrayList<String> slanglist = SearchMeaning(meaning);
-        if(slanglist.size() == 0)
-            System.out.println("Meaning doesn't exist !");
-        else{
-            System.out.println("Slang word");
-            for(String i : slanglist)
-                System.out.println(i);
-        }
-    }
+      //  System.out.print("Enter meaning: ");
+      //  String meaning = scan.nextLine();
+      //  ArrayList<String> slanglist = SearchMeaning(meaning);
+      //  if(slanglist.size() == 0)
+      //      System.out.println("Meaning doesn't exist !");
+      //  else{
+      //      System.out.println("Slang word");
+      //      for(String i : slanglist)
+      //          System.out.println(i);
+      //  }
+   // }
 }
