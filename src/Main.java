@@ -8,7 +8,6 @@ public class Main {
     static HashMap<String,String> hashMap = new HashMap<String,String>();
     static ArrayList<Slang> reset = new ArrayList<Slang>();
     static ArrayList<Slang> list = new ArrayList<Slang>();
-    static ArrayList<String> history = new ArrayList<String>();
     static Scanner scan = new Scanner(System.in);
 
     // Read Slang Word from file
@@ -32,7 +31,7 @@ public class Main {
     public static String SearchSlangWord(String slangword) {
         for (Map.Entry<String, String> set :
                 hashMap.entrySet()) {
-                if(set.getKey()==slangword){
+                if(set.getKey().equalsIgnoreCase(slangword)){
                     return set.getValue();
                 }
         }
@@ -49,11 +48,6 @@ public class Main {
             }
         }
         return slang;
-    }
-
-    // Store History
-    public static void StoreSlang(String slang){
-        history.add(slang);
     }
 
     // Edit Slang
@@ -108,6 +102,9 @@ public class Main {
         return list.get(index).getSlang();
     }
 
+    public static ArrayList<Slang> GetSlangList(){
+        return list;
+    }
     //public static void main(String[] args) throws IOException {
 
       //  ReadSlang("D:\\slang.txt");
