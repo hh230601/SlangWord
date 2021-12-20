@@ -102,6 +102,12 @@ public class Main {
         list = new ArrayList<Slang>(reset);
     }
 
+    // Random
+    public static String RandomSlang(){
+        int index = new Random().nextInt(list.size());
+        return list.get(index).getSlang();
+    }
+
     public static void main(String[] args) throws IOException {
 
         ReadSlang("D:\\slang.txt");
