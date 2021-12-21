@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -62,8 +60,7 @@ public class Main {
     }
 
     // Check exist
-    public static boolean CheckSlang(Slang a)
-    {
+    public static boolean CheckSlang(Slang a) {
         for (Map.Entry<String, String> set : hashMap.entrySet()) {
             if (set.getKey().equalsIgnoreCase(a.getSlang()))
                 return true;
@@ -102,31 +99,19 @@ public class Main {
         return list.get(index).getSlang();
     }
 
+    // Get list
     public static ArrayList<Slang> GetSlangList(){
         return list;
     }
-    public static void main(String[] args) throws IOException {
 
-        ReadSlang("D:\\slang.txt");
-        System.out.print("Enter slang word: ");
-        String slangword = scan.nextLine();
-        //String result = SearchSlangWord(list,slangword);
-        //if(result == null)
-        //    System.out.println("Slang word doesn't exist !");
-        //else
-        //    System.out.println("Meaning of "+ slangword + " is " + result);
-        System.out.print("Enter meaning: ");
-        String meaning = scan.nextLine();
-      //  ArrayList<String> slanglist = SearchMeaning(meaning);
-      //  if(slanglist.size() == 0)
-      //      System.out.println("Meaning doesn't exist !");
-      //  else{
-      //      System.out.println("Slang word");
-      //      for(String i : slanglist)
-      //          System.out.println(i);
-      //  }
-        Slang a = new Slang(slangword,meaning);
-        AddSlang(a);
-        System.out.println(list.get(0).getMeaning());
+    // Save file
+    public static void WriteSlang(String filename) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        writer.write("Slag`Meaning" + "\n");
+        for(Slang i : list){
+            writer.write(i.getSlang() + '`' + i.getMeaning() + "\n");
+        }
+        writer.close();
     }
+
 }
