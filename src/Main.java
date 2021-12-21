@@ -94,9 +94,9 @@ public class Main {
     }
 
     // Random
-    public static String RandomSlang(){
+    public static Slang RandomSlang(){
         int index = new Random().nextInt(list.size());
-        return list.get(index).getSlang();
+        return list.get(index);
     }
 
     // Get list

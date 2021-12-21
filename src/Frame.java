@@ -293,7 +293,7 @@ public class Frame extends javax.swing.JFrame {
         String meaning = MeaningText.getText();
         ArrayList<String> slang = Main.SearchMeaning(meaning);
         for(String i : slang){
-            tableModel.addRow(new Object[] {i,meaning});
+            tableModel.addRow(new Object[] {i,"contains " + meaning});
         }
     }
 
@@ -339,16 +339,70 @@ public class Frame extends javax.swing.JFrame {
 
     private void RandomButtonActionPerformed(java.awt.event.ActionEvent evt) {
         DeleteTable();
-        String slang = Main.RandomSlang();
-        tableModel.addRow(new Object[]{slang});
+        Slang slang = Main.RandomSlang();
+        tableModel.addRow(new Object[]{slang.getSlang()});
     }
 
     private void RandSlangButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        Slang slang = new Slang();
+        Slang i = Main.RandomSlang();
+        Slang j = Main.RandomSlang();
+        Slang k = Main.RandomSlang();
+        Slang l = Main.RandomSlang();
+        int index = new Random().nextInt(4);
+        switch (index) {
+            case 0:
+                slang = i;
+                break;
+            case 1:
+                slang = j;
+                break;
+            case 2:
+                slang = k;
+                break;
+            case 3:
+                slang = l;
+                break;
+        }
+        Object[] possibilities = {i.getMeaning(), j.getMeaning(), k.getMeaning(), l.getMeaning()};
+        String s = (String)JOptionPane.showInputDialog(null,"Meaning of " + slang.getSlang(),"quiz",
+                JOptionPane.PLAIN_MESSAGE,null,possibilities,i.getMeaning());
+        if(s.equalsIgnoreCase(slang.getMeaning())){
+            JOptionPane.showMessageDialog(null, "Your answer is correct !", "Answer", JOptionPane.INFORMATION_MESSAGE, null);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Your answer is wrong !", "Answer", JOptionPane.INFORMATION_MESSAGE, null);
     }
 
     private void RandDefinitionActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        Slang slang = new Slang();
+        Slang i = Main.RandomSlang();
+        Slang j = Main.RandomSlang();
+        Slang k = Main.RandomSlang();
+        Slang l = Main.RandomSlang();
+        int index = new Random().nextInt(4);
+        switch (index) {
+            case 0:
+                slang = i;
+                break;
+            case 1:
+                slang = j;
+                break;
+            case 2:
+                slang = k;
+                break;
+            case 3:
+                slang = l;
+                break;
+        }
+        Object[] possibilities = {i.getSlang(), j.getSlang(), k.getSlang(), l.getSlang()};
+        String s = (String)JOptionPane.showInputDialog(null,"Slang word of " + slang.getMeaning(),"quiz",
+                JOptionPane.PLAIN_MESSAGE,null,possibilities,i.getSlang());
+        if(s.equalsIgnoreCase(slang.getSlang())){
+            JOptionPane.showMessageDialog(null, "Your answer is correct !", "Answer", JOptionPane.INFORMATION_MESSAGE, null);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Your answer is wrong !", "Answer", JOptionPane.INFORMATION_MESSAGE, null);
     }
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
