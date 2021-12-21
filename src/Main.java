@@ -14,7 +14,7 @@ public class Main {
     public static void ReadSlang(String filename) throws IOException{
         list.clear();
         BufferedReader reader = new BufferedReader(new FileReader(filename));
-        String line = null;
+        String line = reader.readLine();
         // Read line from input.txt file
         while ((line = reader.readLine()) != null) {
             // Solve the string
@@ -55,45 +55,45 @@ public class Main {
         if(hashMap.containsKey(edit.getSlang()))
             hashMap.replace(edit.getSlang(),edit.getMeaning());
         for(Slang i : list)
-            if(i.getSlang() == edit.getSlang()) {
+            if(i.getSlang().equalsIgnoreCase(edit.getSlang())) {
                 i.setMeaning(edit.getMeaning());
                 break;
             }
     }
 
+    // Check exist
+    public static boolean CheckSlang(Slang a)
+    {
+        for (Map.Entry<String, String> set : hashMap.entrySet()) {
+            if (set.getKey().equalsIgnoreCase(a.getSlang()))
+                return true;
+        }
+        return false;
+    }
     // Add Slang
     public static void AddSlang(Slang add){
-        for (Map.Entry<String, String> set :
-                hashMap.entrySet()) {
-            if(set.getKey() == add.getSlang()){
-                System.out.print("This slang has been in file, do you want to duplicate or new ");
-                String s = scan.nextLine();
-                if(s == "d"){
-                    String slang = add.getSlang() + "_1";
-                    add.setSlang(slang);
-                }
-                else
-                    EditSlang(add);
-                break;
-            }
-            else{
-                hashMap.put(add.getSlang(), add.getMeaning());
-                list.add(add);
-            }
-        }
-
+        list.add(add);
+        hashMap.put(add.getSlang(),add.getMeaning());
     }
 
     // Remove
     public static void RemoveSlang(Slang remove){
-        list.remove(remove);
+        if(CheckSlang(remove) == false)
+            return;
+        int i = 0;
+        while(i < list.size()){
+            if(list.get(i).getSlang().equalsIgnoreCase(remove.getSlang()))
+                break;
+            else
+                i++;
+        }
+        list.remove(i);
         hashMap.remove(remove.getSlang(),remove.getMeaning());
     }
 
     // Reset
-    public static void ResetSlang(){
-        list.clear();
-        list = new ArrayList<Slang>(reset);
+    public static void ResetSlang() throws  IOException{
+        ReadSlang("D:\\slang.txt");
     }
 
     // Random
@@ -105,18 +105,18 @@ public class Main {
     public static ArrayList<Slang> GetSlangList(){
         return list;
     }
-    //public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 
-      //  ReadSlang("D:\\slang.txt");
-        //System.out.print("Enter slang word: ");
-        //String slangword = scan.nextLine();
+        ReadSlang("D:\\slang.txt");
+        System.out.print("Enter slang word: ");
+        String slangword = scan.nextLine();
         //String result = SearchSlangWord(list,slangword);
         //if(result == null)
         //    System.out.println("Slang word doesn't exist !");
         //else
         //    System.out.println("Meaning of "+ slangword + " is " + result);
-      //  System.out.print("Enter meaning: ");
-      //  String meaning = scan.nextLine();
+        System.out.print("Enter meaning: ");
+        String meaning = scan.nextLine();
       //  ArrayList<String> slanglist = SearchMeaning(meaning);
       //  if(slanglist.size() == 0)
       //      System.out.println("Meaning doesn't exist !");
@@ -125,5 +125,8 @@ public class Main {
       //      for(String i : slanglist)
       //          System.out.println(i);
       //  }
-   // }
+        Slang a = new Slang(slangword,meaning);
+        AddSlang(a);
+        System.out.println(list.get(0).getMeaning());
+    }
 }
