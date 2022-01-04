@@ -340,7 +340,7 @@ public class Frame extends javax.swing.JFrame {
     private void RandomButtonActionPerformed(java.awt.event.ActionEvent evt) {
         DeleteTable();
         Slang slang = Main.RandomSlang();
-        tableModel.addRow(new Object[]{slang.getSlang()});
+        tableModel.addRow(new Object[]{slang.getSlang(), slang.getMeaning()});
     }
 
     private void RandSlangButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,8 +419,8 @@ public class Frame extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try{
-            Main.WriteSlang("D:\\slang_update.txt");
-            JOptionPane.showMessageDialog(null, "List save to slang_update.txt in disk D", " Save file" , JOptionPane.INFORMATION_MESSAGE);
+            Main.WriteSlang("D:\\update.txt");
+            JOptionPane.showMessageDialog(null, "List save to update.txt in disk D", " Save file" , JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception e){
             e.printStackTrace();
